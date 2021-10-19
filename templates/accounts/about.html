@@ -1,0 +1,54 @@
+{% extends 'accounts/base/base.html' %}
+
+{% block title %}{{ block.super }} about{% endblock title %}
+
+{% block mainName %} About {% endblock %}
+
+{% block active_about %}active{% endblock active_about %}
+
+{% block content_inner %}
+<div class="content-inner content-inner-about">
+    <form action="" method="get">
+        <div class="content-inner content-inner-about">
+            <div class="content-filter">
+                <div class="content-filter-item">
+                    <label for='search_box' class="search-label">Search</label>
+                    <input type='text' id='search_box' placeholder="Search Here..." name="search">
+                </div>
+                <div class="content-filter-item">
+                    <label for='level_select' class="search-label">Level</label>
+                    <select name="level_select" id="level_select">
+                        <option value="all">all</option>
+                        <option value="hesham1">{{ 'list'|slice:':3' }}</option>
+                        <option value="Hesham2">Hesham1</option>
+                        <option value="Hesham3">Hesham1</option>
+                    </select>
+                </div>
+                <button class="noselect" style="background: #5f5f5f;"><span class='text'>Search</span><span class="icon"><i class="fas fa-search" style="color: whitesmoke;"></i></span></button>
+            </div>
+        </div>
+    </form>
+    <div class="projects">
+        {% for project in projects %}
+            <div class="project project1" >
+                <div class="project-head">
+                    <h2 class="project-title">{{project.name}}</h2>
+                    <div style="color: #5f5f5f71; font-size: 12px">
+                        <i class="far fa-clock" style="margin-right: 10px;"></i><span>{{project.finish_time|timeuntil}}</span>
+                    </div>
+                </div>
+                <div class="prject-footer">
+                    <div class="project-team">
+                        <span>Team</span>
+                        <span style="font-size: 10px; color: #5f5f5f71;">...</span>
+                    </div>
+                    <div class="project-progress">
+                        <span>Progress</span>
+                        <span style="font-size: 10px; color: #5f5f5f71;">96%</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content_inner %}

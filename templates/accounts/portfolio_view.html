@@ -29,36 +29,35 @@
         </div>
     </form>
     <div class="projects">
-        {% for project in projects %}
-            <a href="{% url 'portfolio_view' project.pk %}" target="_blank" style="text-decoration: none;">
-                <div class="project project{{project.id}}" >
-                    <div class="project-head">
-                        <h2 class="project-title">{{project.name}}</h2>
-                        <div style="color: #5f5f5f71; font-size: 12px">
-                            <i class="far fa-clock" style="margin-right: 10px;"></i><span>{{project.finish_time|timeuntil}}</span>
-                        </div>
-                    </div>
-                    <div class="prject-footer">
-                        <div class="project-team">
-                            <span>Team</span>
-                            <span class="team-pics" style="font-size: 10px; color: #5f5f5f71;">
-                                {% if project.members.all|slice:':3' %}
-                                    {% for member in project.members.all %}
-                                    <div class="team-pic" style="background-image: url({{member.profile.avatar.url}});"></div>
-                                    {% endfor %}
-                                {% else %}
-                                    ...
-                                {% endif %}
-                            </span>
-                        </div>
-                        <div class="project-progress">
-                            <span>Progress</span>
-                            <span style="font-size: 10px; color: #5f5f5f71;">96%</span>
-                        </div>
+        <a href="{% url 'portfolio_view' projects.pk %}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+            <div class="project project{{projects.id}}" >
+                <div class="project-head">
+                    <h2 class="project-title">{{projects.name}}</h2>
+                    <div style="color: #5f5f5f71; font-size: 12px">
+                        <i class="far fa-clock" style="margin-right: 10px;"></i><span>{{projects.finish_time|timeuntil}}</span>
                     </div>
                 </div>
-            </a>
-        {% endfor %}
+                <div class="prject-footer">
+                    <div class="project-team">
+                        <span>Team</span>
+                        <span class="team-pics" style="font-size: 10px; color: #5f5f5f71;">
+                        {{projects.level}}
+                            {% if projects.members.all|slice:':3' %}
+                                {% for member in projects.members.all %}
+                                <div class="team-pic" style="background-image: url({{member.profile.avatar.url}});"></div>
+                                {% endfor %}
+                            {% else %}
+                                ...
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="project-progress">
+                        <span>Progress</span>
+                        <span style="font-size: 10px; color: #5f5f5f71;">96%</span>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 {% endblock content_inner %}

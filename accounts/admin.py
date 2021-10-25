@@ -9,7 +9,6 @@ class PrfileAdmin(admin.StackedInline):
     model = UserProfile
 
 class UserAdmin(admin.ModelAdmin):
-    # model = User
     inlines = [PrfileAdmin]
     fields = (
         'username','email','password','first_name','last_name','last_login','date_joined','is_active','is_superuser','is_staff'

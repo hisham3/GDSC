@@ -10,12 +10,11 @@ def home(request):
     
     return render(request, 'accounts/home.html')
 
-def about(request):
-    valid_query = {k: request.GET[k] for k in request.GET if request.GET[k]}
+def portfolio(request):
     
     projects = Projects.objects.all()
     
-    return render(request, 'accounts/about.html', context={'projects':projects})
+    return render(request, 'accounts/portfolio.html', context={'projects':projects})
 
 
 @register.filter(name='hesham')

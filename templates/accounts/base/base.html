@@ -51,18 +51,18 @@
             </a>
           </li>
           <li class="no-list {% block active_about %}{% endblock active_about %}">
-            <a href="{% url 'about' %}">
+            <a href="">
                 <i class="fas fa-user"></i>
                 <div class="alt">about</div>  
             </a>
           </li>
-          <li class="no-list" {% block active_portfolio %}{% endblock active_portfolio %}>
-            <a href="">
+          <li class="no-list {% block active_portfolio %}{% endblock active_portfolio %}">
+            <a href="{% url 'portfolio' %}">
                 <i class="fas fa-briefcase"></i>
                 <div class="alt">portfolio</div>  
             </a>
           </li>
-          <li class="no-list" {% block active_contacts %}{% endblock active_contacts %}>
+          <li class="no-list {% block active_contacts %}{% endblock active_contacts %}">
             <a href="">
                 <i class="fas fa-phone-alt"></i>
                 <div class="alt">contacts</div>  

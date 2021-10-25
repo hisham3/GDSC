@@ -6,18 +6,24 @@ from django.template.defaulttags import register
 
 # Create your views here.
 
+
 def home(request):
-    
+
     return render(request, 'accounts/home.html')
+
 
 def about(request):
     valid_query = {k: request.GET[k] for k in request.GET if request.GET[k]}
-    
+
     projects = Projects.objects.all()
-    
-    return render(request, 'accounts/about.html', context={'projects':projects})
+
+    return render(request, 'accounts/about.html', context={'projects': projects})
+
+
+def resume(request):
+    return render(request, 'accounts/resume.html')
 
 
 @register.filter(name='hesham')
-def rws(a,s):
+def rws(a, s):
     return f'{a}{s}100'

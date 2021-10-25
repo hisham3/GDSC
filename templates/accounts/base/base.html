@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'accounts/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'accounts/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/sadeen.css' %}">
     <title>{% block title %} Portfolio - {% endblock title %}</title>
 </head>
 <body>
@@ -54,6 +55,12 @@
             <a href="">
                 <i class="fas fa-user"></i>
                 <div class="alt">about</div>  
+            </a>
+          </li>
+          <li class="no-list {% block active_resume %}{% endblock active_resume %}">
+            <a href="{% url 'resume' %}">
+                <i class="fas fa-user"></i>
+                <div class="alt">resume</div>  
             </a>
           </li>
           <li class="no-list {% block active_portfolio %}{% endblock active_portfolio %}">

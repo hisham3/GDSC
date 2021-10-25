@@ -16,6 +16,9 @@ def portfolio(request):
     
     return render(request, 'accounts/portfolio.html', context={'projects':projects})
 
+def resume(request):
+    return render(request, 'accounts/resume.html')
+
 
 @register.filter(name='hesham')
 def rws(a,s):

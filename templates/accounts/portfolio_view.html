@@ -1,63 +1,107 @@
-{% extends 'accounts/base/base.html' %}
-
-{% block title %}{{ block.super }} Portfolio{% endblock title %}
-
-{% block mainName %} Portfolio {% endblock %}
-
-{% block active_portfolio %}active{% endblock active_portfolio %}
-
-{% block content_inner %}
-<div class="content-inner content-inner-portfolio">
-    <form action="" method="get">
-        <div class="content-inner content-inner-portfolio">
-            <div class="content-filter">
-                <div class="content-filter-item">
-                    <label for='search_box' class="search-label">Search</label>
-                    <input type='text' id='search_box' placeholder="Search Here..." name="search" value='{{request.GET.search}}'>
-                </div>
-                <div class="content-filter-item">
-                    <label for='level_select' class="search-label">Level</label>
-                    <select name="level_select" id="level_select">
-                        <option value="all" {% if 'all' == request.GET.level_select %}selected{% endif %}>all</option>
-                        <option value="small" {% if 'small' == request.GET.level_select %}selected{% endif %}>small</option>
-                        <option value="medium" {% if 'medium' == request.GET.level_select %}selected{% endif %}>medium</option>
-                        <option value="huge" {% if 'huge' == request.GET.level_select %}selected{% endif %}>huge</option>
-                    </select>
-                </div>
-                <button class="searchBtn noselect" style="background: #5f5f5f;"><span class='text'>Search</span><span class="icon"><i class="fas fa-search" style="color: whitesmoke;"></i></span></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../static/accounts/css/main.css">
+<link rel="stylesheet" href="../../static/accounts/css/all.css">
+<link rel="stylesheet" href="../../static/accounts/css/sadeen.css">
+<title>Portfolio - A Website</title>
+</head>
+<body>
+<section class="container">
+    <!-- profile -->
+    <div class="profile">
+        <div class="profile-container">
+            <div class="profile-content">
+            <div class="image_profile", style="background-image: url(../media/images/Aliens.jpg);"></div>
+            <h1 class="username">Hesham@gmail.com</h1>
+            <h3 class="username-disc">A Web Developer</h3>
+            <ul class="social-media">
+                <li class="no-list"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                <li class="no-list"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="no-list"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
             </div>
         </div>
-    </form>
-    <div class="projects">
-        <a href="{% url 'portfolio_view' projects.pk %}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-            <div class="project project{{projects.id}}" >
-                <div class="project-head">
-                    <h2 class="project-title">{{projects.name}}</h2>
-                    <div style="color: #5f5f5f71; font-size: 12px">
-                        <i class="far fa-clock" style="margin-right: 10px;"></i><span>{{projects.finish_time|timeuntil}}</span>
-                    </div>
-                </div>
-                <div class="prject-footer">
-                    <div class="project-team">
-                        <span>Team</span>
-                        <span class="team-pics" style="font-size: 10px; color: #5f5f5f71;">
-                        {{projects.level}}
-                            {% if projects.members.all|slice:':3' %}
-                                {% for member in projects.members.all %}
-                                <div class="team-pic" style="background-image: url({{member.profile.avatar.url}});"></div>
-                                {% endfor %}
-                            {% else %}
-                                ...
-                            {% endif %}
-                        </span>
-                    </div>
-                    <div class="project-progress">
-                        <span>Progress</span>
-                        <span style="font-size: 10px; color: #5f5f5f71;">96%</span>
+        <div class="profile-license">
+            <h5>© 2020 All rights reserved.</h5>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="content">
+        <div class="content-container">
+            <div class="content-header">
+            <h1>Contacts</h1>
+            </div>
+            <div class="content-inner content-inner-portfolio">
+                <div class="content-inner-experience">
+                    <div>
+                        <span class="large-text date"><i class="far fa-calendar-alt" style="margin-right: 7px"></i> Starts</span>
+                        <div class="border-left margin-left-1 padding-right-1">
+                            <h5 class="work-at">20 Jan, 2020</h5>
+                        </div>
+                        </p>
+                        <span class="large-text date"><i class="far fa-address-book" style="margin-right: 7px"></i> Description</span>
+                        <div class="border-left margin-left-1 padding-right-1">
+                            <h5 class="work-at">GDSC</h5>
+                            <p class="about-work">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui deleniti excepturi porro ab ipsa sequi adipisci ad, harum unde sapiente doloremque, a, consequuntur facilis amet quis et assumenda? Esse, fuga! Quam consequatur atque veritatis error labore consectetur excepturi est tenetur! Inventore quo maxime eveniet porro voluptatibus! Eaque sapiente temporibus modi consequuntur consectetur velit cupiditate quaerat quo fugiat in sint, vitae ipsa sit rem corrupti? Incidunt aliquam ducimus nulla rerum id iure veritatis, voluptates, a fugit et deleniti veniam eveniet obcaecati? Sint consequatur quos deleniti odit, voluptas dolores cum molestiae deserunt explicabo tempora voluptatum temporibus est commodi repudiandae amet fugit possimus?
+                            </p>
+                        </div>
+                        <span class="large-text date"><i class="far fa-window-restore" style="margin-right: 7px"></i> Demo</span>
+                        <div class="border-left margin-left-1 padding-right-1">
+                                <p class="about-work">Not Available Yet.</p>
+                        </div>
+                        <span class="large-text date"><i class="fas fa-users" style="margin-right: 7px"></i> Members</span>
+                        <div class="border-left margin-left-1 padding-right-1" id="members">
+                            <div class="image-member">
+                                <div class="team-pic" style="background-image: url(../../media/images/Aliens.jpg); width: 80px; height: 80px"></div>
+                                <h5 class="about-work">Hesham Mamdouh</h5>
+                            </div>
+                            <div class="image-member">
+                                <div class="team-pic" style="background-image: url(../../media/images/astrobio_strat_plan_cover-part.jpg__1240x510_q85_crop_subsampling-2.jpg); width: 80px; height: 80px"></div>
+                                <h5 class="about-work">Ahmed Khaled</h5>
+                            </div>
+                        </div>
+                        <span class="large-text date"><i class="far fa-calendar-check" style="margin-right: 7px"></i> Finish</span>
+                        <div class="border-left margin-left-1 padding-right-1">
+                                <p class="about-work">Not Finished Yet.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     </div>
-</div>
-{% endblock content_inner %}
+    <!-- navnar -->
+    <div class="navbar">
+    <ul class="navbar-list">
+        <li class="no-list">
+        <a href="http://127.0.0.1:8000/">
+            <i class="fas fa-home"></i>
+            <div class="alt">home</div>  
+        </a>
+        </li>
+        <li class="no-list">
+        <a href="http://127.0.0.1:8000/resume">
+            <i class="fas fa-bookmark"></i>
+            <div class="alt">resume</div>  
+        </a>
+        </li>
+        <li class="no-list">
+        <a href="http://127.0.0.1:8000/portfolio">
+            <i class="fas fa-briefcase"></i>
+            <div class="alt">portfolio</div>  
+        </a>
+        </li>
+        <li class="no-list active">
+        <a href="http://127.0.0.1:8000/contacts">
+            <i class="fas fa-phone-alt"></i>
+            <div class="alt">contacts</div>  
+        </a>
+        </li>
+    </ul>
+    </div>
+</section>  
+</body>
+</html>
